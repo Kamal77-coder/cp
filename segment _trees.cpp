@@ -155,3 +155,118 @@ public:
  * obj->update(i,val);
  * int param_2 = obj->sumRange(i,j);
  */
+
+
+
+//================help ashu hackerearth problem===============
+
+//finding the number of odd and even numbers in a range ========
+#include <bits/stdc++.h>
+
+using namespace std;
+
+vector<int>st(400004,0);
+
+void build(int si ,int ss,int se,vector<int>&v)
+{
+	if(ss == se)
+	{
+		 if(v[ss]&1)
+		   st[si] = 1;
+		  else
+		  st[si] = 0;
+		  return;
+	}
+
+	int mid = (ss+se)/2;
+	build(2*si,ss,mid,v);
+	build(2*si+1,mid+1,se,v);
+
+	st[si] = st[2*si] + st[2*si+1];
+}
+
+void update(int si,int ss,int se,int idx,vector<int>&v)
+{
+	if(ss == se)
+	{
+		 if(v[ss]&1)
+		   st[si] = 1;
+		  else
+		  st[si] = 0;
+		  return;
+	}
+
+	int mid = (ss+se)/2;
+
+	if(idx<= mid)
+	  update(2*si,ss,mid,idx,v);
+	
+	else
+	  update(2*si+1,mid+1,se,idx,v);
+	
+	st[si] = st[si*2]+st[2*si+1];
+}
+
+int query(int si,int ss,int se,int qs,int qe)
+{
+	if(ss>qe || qs>se)
+	  return 0;
+	
+	if(qs<=ss && qe>= se)
+	 return st[si];
+	
+	int mid = (ss+se)/2;
+	int l = query(2*si ,ss,mid,qs,qe);
+
+	int r = query(2*si+1,mid+1,se,qs,qe);
+
+	return l+r;
+}
+int main() {
+	int n;
+	cin >> n;										
+			
+	vector<int>v(n,0);
+	for(int i=0;i<n ;i++)
+	{
+		cin>>v[i];
+
+	}
+	build(1,0,n-1,v);
+	int q;
+	cin>>q;
+
+	while(q--)
+	{
+        int t,a,b;
+
+		cin>>t>>a>>b;
+
+		if(t == 0)
+		{
+			a--;
+			v[a] = b;
+			update(1 ,0,n-1,a,v);
+
+		}
+
+		if(t == 2)
+		{
+			a--;   //1 based indexing
+			b--;
+			int ans = query(1,0,n-1,a,b);
+			cout<<ans<<endl;
+		}
+        
+		if(t == 1)
+		{
+			a--;b--;//1 based indexing
+			int ans = query(1,0,n-1,a,b);
+			int ele = b-a+1;
+			 
+			cout<<(ele-ans)<<endl;
+		}
+	}
+	return 0;
+}
+
