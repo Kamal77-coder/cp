@@ -115,4 +115,42 @@ int KthOnToOFF(int num, int k) // on -> oFF and off -> off
 {
     int mask = (~(1 << k));
     return (num & mask);
+} 
+//updating the ith bit
+#include <iostream>
+using namespace std;
+
+void update(int &n ,int k, int b)
+{
+    int mask = ~(1<<k);
+
+    n = (n & mask);
+
+    mask = (b<<k);
+
+    n = n | mask;
 }
+int main() {
+    
+
+    int n = 125;
+
+    cout<<"before\n :";
+    for(int i= 31;i>=0 ;i--)
+    {
+        bool check =  (n & 1<<i);
+        cout<<check<<" ";
+    }
+    cout<<"\n";
+
+    update( n, 0,0);
+     cout<<"after\n :";
+    for(int i= 31;i>=0 ;i--)
+    {
+        bool check =  (n & 1<<i);
+        cout<<check<<" ";
+    }
+
+   return 0;
+}
+
