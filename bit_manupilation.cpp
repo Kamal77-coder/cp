@@ -104,3 +104,15 @@ int main()
 	}
 	return 0;
 }
+
+int KthOFFToON(int num, int k) // on -> on and off -> on
+{
+    int mask = (1 << k);
+    return (num | mask);
+}
+
+int KthOnToOFF(int num, int k) // on -> oFF and off -> off
+{
+    int mask = (~(1 << k));
+    return (num & mask);
+}
