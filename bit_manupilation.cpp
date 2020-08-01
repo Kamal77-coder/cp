@@ -75,3 +75,30 @@ int main()
 	}
 	return 0;
 }
+//gfg :counting bits
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+	//code
+	
+	int t;
+	cin>>t;
+	
+	while(t--)
+	{
+	    int n; 
+	    cin>>n;
+	    
+	    int count = 0;
+	    
+	    for(int i=31 ;i>= 0 ;i--)
+	    {
+	        if( n & (1<<i))
+	          count++;
+	    }
+	    cout<<count<<endl;
+	}
+	return 0;
+}
