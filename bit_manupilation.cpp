@@ -258,3 +258,37 @@ int main() {
    */
    return 0;
 }
+
+
+// leetcode 191 : Number of 1s
+
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        
+        //method 1:
+        int count = 0;
+        /*while(n>0)
+        {
+            count += (n & 1);
+            
+            n  = (n>>1);
+        }
+        return count;*/
+        
+        //method 2:error = hift exponent 63 is too large for 32-bit type
+        /*for(int i = 63 ;i>=0; i--)
+        {
+            count += ((n>>i)&1);
+        }*/
+        
+        //method 3: faster than 100%
+        while(n>0)
+        {
+            n = (n & (n-1)); //clears the rightmost set bit
+		    //1000011 -> 1000010
+            count++;
+        }//the loop runs the no. of set bit times
+        return count;
+    }
+};
