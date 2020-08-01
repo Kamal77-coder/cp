@@ -29,9 +29,11 @@ int main()
     int k = 100;
     
     cout<<(k<<4)<<endl;  //  100*2^4 =1600
-    
+                         //100<<i : i 0s added in binary representation of 100 on rightmost side
     cout<<(k>>4);   //6  100/(2^4) = 6
                       //100 = (1100100) , 6 = (110)
+	
+	              //100>>i  : rightmost i bits are gone and rest bits are shifted accordingly
 }
 //power of two : leetcode
 class Solution {
@@ -102,4 +104,3 @@ int main()
 	}
 	return 0;
 }
-
