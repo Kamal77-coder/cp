@@ -192,3 +192,69 @@ int main() {
 
    return 0;
 }
+
+
+//Given two numbers N and M u have to replace all the bits of M in range l to r
+//with corresponding bits in N
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+
+   int n = 235467,m= 45;
+   
+    cout<<"\n before n:";
+
+   for(int i=31;i>=0 ;i--)
+   {
+       bool check = (n & (1<<i));
+       cout<<check<<" ";
+   }
+   cout<<"\n before m:";
+
+   for(int i=31;i>=0 ;i--)
+   {
+       bool check = (m & (1<<i));
+       cout<<check<<" ";
+   }
+  
+   int l = 15,r =1;
+   
+   int mask = 0;
+   for(int i = 31;i>= 0;i--)
+   {
+
+       if(i<=l && i>=r)
+       {
+           bool check = (n & (1<<i));
+
+          mask = (mask | (check<<i));  //generating all the bits of range
+       }
+       else
+        {
+            bool check = (m & (1<<i));
+
+            mask = (mask | (check<<i)); 
+        }
+   }
+  
+  
+   m = mask;  //apply the mask on the number
+   
+    cout<<"\n aftere m:";
+
+   for(int i=31;i>=0 ;i--)
+   {
+       bool check = (m & (1<<i));
+       cout<<check<<" ";
+   }
+   cout<<"\n";
+   /*
+   before n:0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 1 1 1 0 0 1 0 1 1 
+   before m:0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 1 
+   aftere m:0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 1 1 1 1 1 0 0 1 0 1 1 
+   */
+   return 0;
+}
