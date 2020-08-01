@@ -95,10 +95,11 @@ int main()
 	    
 	    for(int i=31 ;i>= 0 ;i--)
 	    {
-	        if( n & (1<<i))
+	         if((n>>i) & 1)       //if( n & (1<<i)) also worked
 	          count++;
 	    }
 	    cout<<count<<endl;
 	}
 	return 0;
 }
+
