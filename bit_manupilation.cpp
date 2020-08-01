@@ -154,3 +154,41 @@ int main() {
    return 0;
 }
 
+//clearing a range of bits
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+
+    int n = 125;
+    
+    cout<<"Before\n";
+
+    for(int i=31 ;i>=0 ;i--)
+    {
+        bool check = (n & (1<<i));
+        cout<<check<<" ";
+    }
+     int l = 4,r = 2;
+
+
+     int ele = l - r +1;
+
+     int mask = (1<<ele) -1;
+
+     mask = ~(mask<<r);
+
+     cout<<"\nAfter:\n";//1 1 1 1 1 0 1 
+                        //1 1 0 0 0 0 1 
+
+     n = n & mask;
+
+    for(int i=31 ;i>=0 ;i--)
+    {
+        bool check = (n & (1<<i));
+        cout<<check<<" ";
+    }
+
+   return 0;
+}
