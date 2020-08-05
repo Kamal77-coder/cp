@@ -2,14 +2,14 @@
 
 using namespace std;
 
-int x,y;
+int x,y,d;
 void extend_euclid(int a,int b)
 {
     if(b == 0)
     {
 
         x = 1, y= 0;
-
+         d = a;
        // cout<<__gcd(a,b)<<" ="<<a<<"*"<<x<<"+"<<b<<"*"<<y<<endl;
         return ;
     }
