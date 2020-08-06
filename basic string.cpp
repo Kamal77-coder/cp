@@ -68,7 +68,9 @@ int main() {
       cout<<ch;
 
       cout<<endl;
-
+      //iterators are defined for a class to declare an iterator the syntax would be
+    
+      string :: iterator it;
       //iterating using iterators
 
       for(auto it = s6.begin() ; it!= s6.end() ;it++)
