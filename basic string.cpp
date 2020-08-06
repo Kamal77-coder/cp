@@ -111,3 +111,56 @@ int main() {
      cout<<x<<endl;
 
 }
+
+//string basic part 3 : string tokeniser
+#include <iostream>
+#include<vector>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+int main() {
+  
+   //string tokenisation
+
+   //char* strtok(char* s ,char* delimitter)
+   //returns token on each subsequent call
+   //on the first call function should be passed with string arguemnet for 's'
+   //on subsequent calls we should pass the string as NULL
+
+   //example:
+
+
+   char s[] = "today is a rainy day";
+
+   cout<<s<<endl;   //today is a rainy day
+
+    /*char* ptr = strtok(s , " "); //delimitter is space in this case
+
+   cout<<ptr<<endl;  //today
+
+   ptr = strtok( NULL , " ");  //is
+   cout<<ptr<<endl ;
+
+   ptr = strtok( NULL , " ");  //a
+   cout<<ptr<<endl ;  */
+
+   //or simply we could do this
+
+   
+   char *ptr = strtok( s , " ");         
+
+   while(ptr != NULL)
+   {
+       cout<<ptr<<endl;
+       ptr = strtok(NULL , " ");
+   }
+
+/*today is a rainy day
+today
+is
+a
+rainy
+day*/
+
+}
