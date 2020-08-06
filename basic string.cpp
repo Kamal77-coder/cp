@@ -164,3 +164,71 @@ rainy
 day*/
 
 }
+//part 4 :Our own string tokeniser implimentation
+
+#include <iostream>
+#include<vector>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+
+char* mystrtok(char* s ,char delim)
+{
+    //string and single char act as NULL
+
+    static char *input = NULL;
+
+    if( s!= NULL) 
+    {
+        //we aree making the first call
+        input = s;
+    }
+    //base case 
+    //after the final token has been returned
+
+    if(input == NULL)
+     return NULL;
+    //start extracting the tokens and store them in an array
+    //we want this memory to exist even after the function call is over
+
+    char* output = new char[strlen(input)+1];
+   
+   int i;
+   for(i=0 ;input[i] != '\0' ;i++)
+   {
+      if(input[i] != delim)
+      {
+          output[i] = input[i];
+      }
+      else
+      {
+          output[i] ='\0';
+          input = input + i +1 ;  //we want to jump to the next character after delimitter
+          return output;
+      }
+   }
+   
+   //corner case when the last token does not have delimitter
+
+   output[i] = NULL;
+   input = NULL;
+   return output;
+
+
+}
+int main() {
+  
+  //Designing our own string tokeniser
+  char s[] = "today is a rainy day";
+
+  char* ptr = mystrtok( s ,' ');
+
+  while(ptr != NULL)
+  {
+      cout<<ptr<<"\n";
+
+      ptr = mystrtok(NULL , ' ');
+  }
+
+}
