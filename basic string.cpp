@@ -76,3 +76,38 @@ int main() {
       for(auto it = s6.begin() ; it!= s6.end() ;it++)
       cout<<*it;
 }
+ //part 3 string sorting
+#include <iostream>
+#include<vector>
+#include<cstring>
+#include<algorithm>
+
+using namespace std;
+int main() {
+  
+    vector<string> dict = {"kamal" ,"rohilla","mukul" ,"aman","ksmad"};
+
+    sort(dict.begin() ,dict.end() , [](string a ,string b)
+    {
+        return a<b ;
+    });
+
+    for(string x : dict) 
+    /*aman
+    kamal
+    ksmad
+    mukul
+    rohilla */
+     cout<<x<<endl;
+
+     //comparing on the basis of lenght
+    sort(dict.begin() ,dict.end() , [](string a ,string b)
+    {
+        if(a.length() == b.length())return a>b;
+        return a.length()<b.length() ;
+    });
+
+    for(string x : dict) 
+     cout<<x<<endl;
+
+}
