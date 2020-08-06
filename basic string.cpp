@@ -176,6 +176,7 @@ using namespace std;
 char* mystrtok(char* s ,char delim)
 {
     //string and single char act as NULL
+     //we want this memory to exist even after the function call is over
 
     static char *input = NULL;
 
@@ -190,8 +191,8 @@ char* mystrtok(char* s ,char delim)
     if(input == NULL)
      return NULL;
     //start extracting the tokens and store them in an array
-    //we want this memory to exist even after the function call is over
-
+    
+    
     char* output = new char[strlen(input)+1];
    
    int i;
